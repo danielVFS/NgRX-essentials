@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { customIncrement } from '../state/counter.actions';
+import { changeProjectName, customIncrement } from '../state/counter.actions';
 import { CounterState } from '../state/counter.state';
 
 @Component({
@@ -9,13 +9,23 @@ import { CounterState } from '../state/counter.state';
   styleUrls: ['./custom-counter-input.component.scss'],
 })
 export class CustomCounterInputComponent implements OnInit {
+  projectName: string;
   value: number;
 
   constructor(private store: Store<{ counter: CounterState }>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.select('counter').subscribe((data) => {
+      console.log('project name observable called');
+      this.projectName = data.projectName;
+    });
+  }
 
   onAdd(): void {
-    this.store.dispatch(customIncrement({ value: Number(this.value) }));
+    this.store.dispatch(customIncrement({ value: +this.value }));
+  }
+
+  onChangeProjectName(): void {
+    this.store.dispatch(changeProjectName());
   }
 }

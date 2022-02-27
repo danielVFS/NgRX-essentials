@@ -4,6 +4,7 @@ import {
   decrement,
   reset,
   customIncrement,
+  changeProjectName,
 } from './counter.actions';
 import { initialState } from './counter.state';
 
@@ -12,9 +13,13 @@ const _counterReducer = createReducer(
   on(increment, (state) => ({ ...state, counter: state.counter + 1 })),
   on(decrement, (state) => ({ ...state, counter: state.counter - 1 })),
   on(reset, (state) => ({ ...state, counter: 0 })),
-  on(customIncrement, (state, { value }) => ({
+  on(customIncrement, (state, action) => ({
     ...state,
-    counter: state.counter + value,
+    counter: state.counter + action.value,
+  })),
+  on(changeProjectName, (state) => ({
+    ...state,
+    projectName: 'Counter using Angular NgRX',
   }))
 );
 
