@@ -1,1 +1,51 @@
-<p>add-post works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Add Post</h3>
+    <hr />
+    <form [formGroup]="postForm" (ngSubmit)="onAddPost()">
+      <div class="mb-3">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          type="text"
+          class="form-control"
+          formControlName="title"
+        />
+        <div
+          *ngIf="hasTitleError()"
+          class="alert alert-danger mt-2"
+          role="alert"
+        >
+          {{ showTitleErrors() }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          type="text"
+          class="form-control"
+          formControlName="description"
+        ></textarea>
+        <div
+          *ngIf="hasDescriptionError()"
+          class="alert alert-danger mt-2"
+          role="alert"
+        >
+          {{ showDescriptionErrors() }}
+        </div>
+      </div>
+
+      <div class="my-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!postForm.valid"
+        >
+          Add Post
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
