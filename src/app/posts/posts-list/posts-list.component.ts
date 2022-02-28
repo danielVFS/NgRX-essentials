@@ -16,6 +16,6 @@ export class PostsListComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.posts$ = this.store.select(getPosts);
+    this.posts$ = this.store.select(getPosts());
   }
 }
