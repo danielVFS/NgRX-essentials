@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/counter/app.state';
 import { Post } from 'src/app/models/post.model';
 import { getPostById } from '../state/post.selectors';
+import { udpdatePost } from '../state/posts.actions';
 
 @Component({
   selector: 'app-edit-post',
@@ -49,5 +50,53 @@ export class EditPostComponent implements OnInit, OnDestroy {
     if (this.postSubscription$) this.postSubscription$.unsubscribe();
   }
 
-  onUpdatePost(): void {}
+  onUpdatePost(): void {
+    if (!this.postForm.valid) return;
+
+    const title = this.postForm.value.title;
+    const description = this.postForm.value.description;
+    const post: Post = {
+      ...this.post,
+      title,
+      description,
+    };
+
+    console.log(post);
+    this.store.dispatch(udpdatePost({ post }));
+  }
+
+  hasTitleError(): boolean {
+    const titleForm = this.postForm.get('title');
+    if (titleForm.touched && !titleForm.valid) {
+      return titleForm.errors['minlength'] || titleForm.errors['required'];
+    }
+  }
+
+  showTitleErrors(): string {
+    const titleForm = this.postForm.get('title');
+    if (titleForm.touched && !titleForm.valid) {
+      if (titleForm.errors['required']) return 'Title is required';
+      if (titleForm.errors['minlength'])
+        return 'Title should have at least 6 characters';
+    }
+  }
+
+  hasDescriptionError(): boolean {
+    const descriptionForm = this.postForm.get('description');
+    if (descriptionForm.touched && !descriptionForm.valid) {
+      return (
+        descriptionForm.errors['minlength'] ||
+        descriptionForm.errors['required']
+      );
+    }
+  }
+
+  showDescriptionErrors(): string {
+    const descriptionForm = this.postForm.get('description');
+    if (descriptionForm.touched && !descriptionForm.valid) {
+      if (descriptionForm.errors['required']) return 'Description is required';
+      if (descriptionForm.errors['minlength'])
+        return 'Description should have at least 10 characters';
+    }
+  }
 }

@@ -2,4 +2,9 @@ import { createAction, props } from '@ngrx/store';
 import { Post } from 'src/app/models/post.model';
 
 export const ADD_POST_ACTION = '[Post Page] add post';
+export const UPDATE_POST_ACTION = '[Post Page] update post';
 export const addPost = createAction(ADD_POST_ACTION, props<{ post: Post }>());
+export const udpdatePost = createAction(
+  UPDATE_POST_ACTION,
+  props<{ post: Post }>()
+);

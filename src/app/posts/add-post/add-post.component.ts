@@ -28,6 +28,17 @@ export class AddPostComponent implements OnInit {
     });
   }
 
+  onAddPost(): void {
+    const { title, description } = this.postForm.value;
+
+    const post: Post = {
+      title,
+      description,
+    };
+
+    this.store.dispatch(addPost({ post }));
+  }
+
   hasTitleError(): boolean {
     const titleForm = this.postForm.get('title');
     if (titleForm.touched && !titleForm.valid) {
@@ -61,16 +72,5 @@ export class AddPostComponent implements OnInit {
       if (descriptionForm.errors['minlength'])
         return 'Description should have at least 10 characters';
     }
-  }
-
-  onAddPost(): void {
-    const { title, description } = this.postForm.value;
-
-    const post: Post = {
-      title,
-      description,
-    };
-
-    this.store.dispatch(addPost({ post }));
   }
 }
