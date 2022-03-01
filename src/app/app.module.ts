@@ -7,20 +7,11 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { environment } from 'src/environments/environment';
 import { appReducer } from './counter/app.state';
-import { AddPostComponent } from './posts/add-post/add-post.component';
-import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    PostsListComponent,
-    AddPostComponent,
-    EditPostComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
