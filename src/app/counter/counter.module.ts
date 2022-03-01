@@ -8,7 +8,7 @@ import { CounterOutputComponent } from './counter-output/counter-output.componen
 import { CounterComponent } from './counter/counter.component';
 import { CustomCounterInputComponent } from './custom-counter-input/custom-counter-input.component';
 import { counterReducer } from './state/counter.reducer';
-import { COUNTER_STATE_NAME } from './state/counter.selectors';
+import { COUNTER_STATE_NAME } from './state/counter.selector';
 
 const routes: Routes = [{ path: '', component: CounterComponent }];
 
