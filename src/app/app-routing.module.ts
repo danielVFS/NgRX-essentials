@@ -6,7 +6,10 @@ import { EditPostComponent } from './posts/edit-post/edit-post.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
   {
     path: 'counter',
     loadChildren: () =>
