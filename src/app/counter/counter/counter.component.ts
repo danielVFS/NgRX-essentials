@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../app.state';
+import { AppState } from '../../app.state';
 import { getProjectName } from '../state/counter.selectors';
-import { CounterState } from '../state/counter.state';
 
 @Component({
   selector: 'app-counter',

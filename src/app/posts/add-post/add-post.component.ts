@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/counter/app.state';
+import { AppState } from 'src/app/app.state';
 import { Post } from 'src/app/models/post.model';
 import { v4 as uuid } from 'uuid';
 import { addPost } from '../state/posts.actions';

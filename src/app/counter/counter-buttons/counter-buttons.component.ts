@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.state';
+import { AppState } from '../../app.state';
 import { decrement, increment, reset } from '../state/counter.actions';
 import { CounterState } from '../state/counter.state';
 @Component({
