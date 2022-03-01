@@ -1,1 +1,56 @@
-<p>login works!</p>
+<div class="row mt-2">
+  <div class="col-md-6 offset-md-3">
+    <h3>Login</h3>
+    <hr />
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="email" />
+        <div
+          *ngIf="
+            loginForm.get('email').touched && !loginForm.get('email').valid
+          "
+        >
+          <div
+            *ngIf="loginForm.get('email').errors['required']"
+            class="alert alert-danger mt-2"
+          >
+            Email is required
+          </div>
+          <div
+            *ngIf="loginForm.get('email').errors['email']"
+            class="alert alert-danger mt-2"
+          >
+            Invalid Email
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password').touched &&
+            !loginForm.get('password').valid
+          "
+        >
+          <div class="alert alert-danger mt-2">Password is required</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!loginForm.valid"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
