@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/counter/app.state';
@@ -19,7 +19,11 @@ export class EditPostComponent implements OnInit, OnDestroy {
   postForm: FormGroup;
   postSubscription$: Subscription;
 
-  constructor(private route: ActivatedRoute, private store: Store<AppState>) {}
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<AppState>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
@@ -61,8 +65,8 @@ export class EditPostComponent implements OnInit, OnDestroy {
       description,
     };
 
-    console.log(post);
     this.store.dispatch(udpdatePost({ post }));
+    this.router.navigate(['/posts']);
   }
 
   hasTitleError(): boolean {
