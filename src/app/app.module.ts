@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { environment } from 'src/environments/environment';
-import { appReducer } from './counter/app.state';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
