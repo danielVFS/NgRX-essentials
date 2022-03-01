@@ -18,7 +18,7 @@ import { appReducer } from './counter/app.state';
     FormsModule,
     ReactiveFormsModule,
 
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
       autoPause: true,
